@@ -1,0 +1,88 @@
+{
+    "name": "Talia Müzik Bot",
+    "logo": "https://telegra.ph/file/bad69dc7929731b11e056.jpg",
+    "description": "Talia Müzik projesi, telegram sesli sohbet özelliğine, Müzik akışı yapmanızı sağlar.",
+    "keywords": ["music", "voice chat", "telegram"],
+    "repository": "https://github.com/Mehmetbaba55/TaliaMusicV6.0",
+    "stack": "container",
+    "env": {
+        "SESSION_NAME": {
+            "description": "pyrogram oturum dizesiyle doldurma",
+            "required": true
+        },
+        "BOT_TOKEN": {
+            "description": "bot jetonunuz @BotFather",
+            "required": true
+        },
+        "BOT_NAME": {
+            "description": "müzik botu adınız.",
+            "required": false,
+            "value": ""
+        },
+        "BOT_USERNAME": {
+            "description": "bot kullanıcı adınızla doldurmadan @",
+            "required": true,
+            "value": ""
+        },
+        "ASSISTANT_NAME": {
+            "description": "yardımcı kullanıcı adı ile doldurma @",
+            "required": true,
+            "value": ""
+        },
+        "BG_IMAGE": {
+            "description": "arka plan resim bağlantınızla doldurma",
+            "required": false,
+            "value": "https://telegra.ph/file/cd0b87484429704c7b935.png"
+        },
+        "THUMB_IMG": {
+            "description": "küçük resim görüntüsüyle doldurmak bg_image",
+            "required": false,
+            "value": ""
+        },
+        "OWNER_NAME": {
+            "description": "kullanıcı adınızla doldurmadan @",
+            "required": false,
+            "value": ""
+        },
+        "API_ID": {
+            "description": "uygulama kimliğinizden.telegram.org/apps",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "benim api karma.telegram.org/apps",
+            "required": true
+        },
+        "SUDO_USERS": {
+            "description": "sudo üye listesi listesi kimliği (Boşluklara göre ayır).",
+            "required": true
+        },
+        "DURATION_LIMIT": {
+            "description": "indirilen video için en fazla süre (dakikalar içinde).",
+            "required": true,
+            "value": "60"
+        },
+        "PMPERMIT": {
+            "description": "pm-permit asistan için.",
+            "required": false,
+            "value": "ENABLE"
+        },
+        "UPDATES_CHANNEL": {
+            "description": "Kanal kullanıcı adınız ile doldurun, Eğer iznin yoksa.",
+            "required": false,
+            "value": ""
+        },
+        "GROUP_SUPPORT": {
+            "description": "grup kullanıcı adınızla doldurma, Atlamanız yoksa",
+            "required": false,
+            "value": ""
+        }
+    },
+    "buildpacks": [
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
