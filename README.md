@@ -36,34 +36,34 @@
 
 ## Komutlar ⌨️
 
-- '/play <song name>' - istediğiniz şarkıyı çalın
-- '/playlist' - Şimdi çalma listesini göster
-- '/song <song name>' - istediğiniz şarkıları hızlı bir şekilde indirin
-- '/search <query>' - youtube'da detayları içeren videoları arayın
-- '/vsong <song adı>' - istediğiniz videoları hızlı bir şekilde indiri
+- `/play <song name>` - istediğiniz şarkıyı çalın
+- `/playlist` - Şimdi çalma listesini göster
+- `/song <song name>` - istediğiniz şarkıları hızlı bir şekilde indirin
+- `/search <query>` - youtube'da detayları içeren videoları arayın
+- `/vsong <song adı>` - istediğiniz videoları hızlı bir şekilde indiri
 
 #### Yalnızca Yöneticiler👷‍♂️
-- '/player' - açık müzik çalar ayarları paneli
-- '/pause' - şarkı çalmayı duraklat
-- '/resume' - şarkı çalmaya devam et
-- '/skip' - sonraki şarkıyı çal
-- '/end' - müzik çalmayı durdur
-- '/musicplayer açık' - grubunuzdaki müzik çaları devre dışı bırakmak için
-- '/musicplayer kapalı' - grubunuzda müzik çaları etkinleştirmek için
-- '/userbotjoin' - asistanı sohbetinize davet edin
-- '/userbotleave' - asistanı sohbetinizden çıkarın
-- '/reload' - Yönetici listesini yenile
-- '/uptime' - botun çalışma süresi durumunu kontrol edin
-- '/ping' - bot ping durumunu kontrol edin
+- `player` - açık müzik çalar ayarları paneli
+- `/pause` - şarkı çalmayı duraklat
+- `/resume` - şarkı çalmaya devam et
+- `/skip` - sonraki şarkıyı çal
+- `/end` - müzik çalmayı durdur
+- `/musicplayer` açık - grubunuzdaki müzik çaları devre dışı bırakmak için
+- `/musicplayer` kapalı - grubunuzda müzik çaları etkinleştirmek için
+- `/userbotjoin` - asistanı sohbetinize davet edin
+- `/userbotleave` - asistanı sohbetinizden çıkarın
+- `/reload` - Yönetici listesini yenile
+- `/uptime` - botun çalışma süresi durumunu kontrol edin
+- `/ping` - bot ping durumunu kontrol edin
 
 ### Sudo Kullanıcısı 🧙‍♂️
-- '/pmpermit on | kapalı' yardımcı pmpermit'i açma/kapatma
-- '/userbotleaveall' - asistana tüm grupları terk etmesini emret
-- '/gcast' - yayın mesajı gönderin
+- `/pmpermit on | kapal`' yardımcı pmpermit'i açma/kapatma
+- `/userbotleaveall` - asistana tüm grupları terk etmesini emret
+- `/gcast` - yayın mesajı gönderin
 
 ### pm-permit 💬
-- '.yes' - kullanıcının asistana mesaj göndermesini onaylayın
-- '.no' - kullanıcıyı asistana mesaj gönderdiği için onaylayarak
+- `.yes` - kullanıcının asistana mesaj göndermesini onaylayın
+- `.no` - kullanıcıyı asistana mesaj gönderdiği için onaylayarak
 
 ## 🔎 Satır içi aramayı destekleyin
 
