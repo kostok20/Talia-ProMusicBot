@@ -1,4 +1,4 @@
-<h2 align="centre">🕸️Telegram ProMusic Bot 🏋️‍♀️</h2>
+<h2 align="centre">Telegram ProMusic Bot 🏋️‍♀️</h2>
 
 ### Talia Music, telegram sesli sohbet grubunda müzik çalmanıza izin veren bir telegram botu ve basit kullanımı olan projesidir.
  
