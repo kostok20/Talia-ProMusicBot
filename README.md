@@ -36,12 +36,12 @@
 
 ## Komutlar ⌨️
 
-- `/play <song name>` - istediğiniz şarkıyı çalın
+- `/play <song name>` - istediğiniz şarkıyı çalın 5li modül halinde size sunar. 
 - `/oynat` Mp3 formatı Deezer dan atılan müzikleri oynatır. 
 - `/liste` - Şimdi çalma listesini göster
 - `/bul <song name>` - istediğiniz şarkıları hızlı bir şekilde indirin
 - `/arama <query>` - youtube'da detayları içeren videoları arayın
-- `/vsong <song adı>` - istediğiniz videoları hızlı bir şekilde indiri
+- `/vsong <song adı>` - istediğiniz videoları hızlı bir şekilde indirin
 
 #### Yalnızca Yöneticiler👷‍♂️
 - `player` - açık müzik çalar ayarları paneli
@@ -73,8 +73,7 @@ Bu bota ev sahipliği yapmanın kolay yolu, Heroku'ya dağıtın
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Mehmetbaba55/TaliaMusicV6.0)
 
-## Demiryolu Dağıtımı 🚄
-Demiryolunda konuşlandırma için [Necessary Variables Here](https://github.com/aryazakaria01/CBMusicBot/blob/main/example.env), hepsini doldurduğundan emin ol.
+### Telegramın En iyi Mp3 formatında seri çalabilen müzik botudur.(Mp3 parçalarına bul yazıp /oynat demeniz yeterli olacaktır.) 
 
 
 
