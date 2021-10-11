@@ -37,21 +37,22 @@
 ## Komutlar ⌨️
 
 - `/play <song name>` - istediğiniz şarkıyı çalın
-- `/playlist` - Şimdi çalma listesini göster
-- `/song <song name>` - istediğiniz şarkıları hızlı bir şekilde indirin
-- `/search <query>` - youtube'da detayları içeren videoları arayın
+- `/oynat` Mp3 formatı Deezer dan atılan müzikleri oynatır. 
+- `/liste` - Şimdi çalma listesini göster
+- `/bul <song name>` - istediğiniz şarkıları hızlı bir şekilde indirin
+- `/arama <query>` - youtube'da detayları içeren videoları arayın
 - `/vsong <song adı>` - istediğiniz videoları hızlı bir şekilde indiri
 
 #### Yalnızca Yöneticiler👷‍♂️
 - `player` - açık müzik çalar ayarları paneli
-- `/pause` - şarkı çalmayı duraklat
-- `/resume` - şarkı çalmaya devam et
-- `/skip` - sonraki şarkıyı çal
-- `/end` - müzik çalmayı durdur
+- `/durdur` - şarkı çalmayı duraklat
+- `/devam` - şarkı çalmaya devam et
+- `/atla` - sonraki şarkıyı çal
+- `/son` - müzik çalmayı durdur
 - `/musicplayer` açık - grubunuzdaki müzik çaları devre dışı bırakmak için
 - `/musicplayer` kapalı - grubunuzda müzik çaları etkinleştirmek için
-- `/userbotjoin` - asistanı sohbetinize davet edin
-- `/userbotleave` - asistanı sohbetinizden çıkarın
+- `/asistan` - asistanı sohbetinize davet edin
+- `/asistandefol` - asistanı sohbetinizden çıkarın
 - `/reload` - Yönetici listesini yenile
 - `/uptime` - botun çalışma süresi durumunu kontrol edin
 - `/ping` - bot ping durumunu kontrol edin
