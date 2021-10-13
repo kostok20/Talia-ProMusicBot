@@ -71,7 +71,7 @@
 ## Heroku Dağıtımı 💜
 Bu bota ev sahipliği yapmanın kolay yolu, Heroku'ya dağıtın
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Mehmetbaba55/TaliaMusicV6.0)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Mehmetbaba55/Talia-ProMusicBot)
 
 ### Telegramın En iyi Mp3 formatında seri çalabilen müzik botudur.(Mp3 parçalarına bul yazıp /oynat demeniz yeterli olacaktır.) 
 
