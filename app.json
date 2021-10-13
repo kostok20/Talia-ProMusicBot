@@ -3,7 +3,7 @@
     "logo": "https://telegra.ph/file/bad69dc7929731b11e056.jpg",
     "description": "Talia Müzik projesi, telegram sesli sohbet özelliğine, Müzik akışı yapmanızı sağlar.",
     "keywords": ["music", "voice chat", "telegram"],
-    "repository": "https://github.com/Mehmetbaba55/TaliaMusicV6.0",
+    "repository": "https://github.com/Mehmetbaba55/Talia-ProMusicBot",
     "stack": "container",
     "env": {
         "SESSION_NAME": {
