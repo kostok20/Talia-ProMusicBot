@@ -768,7 +768,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"💡 **Kuyruğa eklenen parça**\n\n🎴 **İsmi:** [{title[:35]}]({url})\n⏱ **Şarkının süresi:** `{duration}`\n🎧 **Talep eden kişi:** {r_by.mention}\n" \
+        caption=f"🌀 **Sıraya eklenen parça**\n\n🎴 **İsmi:** [{title[:35]}]({url})\n⏱ **Şarkının süresi:** `{duration}`\n🎧 **Talep eden kişi:** {r_by.mention}\n" \
                +f"🔢 **Konumda sıraya alındı:** » `{position}` «",
         reply_markup=keyboard,
         )
@@ -789,7 +789,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"🏷 **İsmi:** [{title[:35]}]({url})\n⏱ **Süre:** `{duration}`\n💡 **Durum:** `Oynatılıyor`\n" \
+        caption=f"🎵 **Şarkının ismi:** [{title[:35]}]({url})\n⏱ **Şarkının süresi:** `{duration}`\n🔊 **Durum:** `Oynatılıyor`\n" \
                +f"🎧 **Talep eden:** {r_by.mention}",
         reply_markup=keyboard,
         )
