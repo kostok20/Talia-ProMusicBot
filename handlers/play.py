@@ -318,8 +318,8 @@ async def m_cb(b, cb):
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "**Çalınan Şarkılar** di {}".format(cb.message.chat.title)
-        msg += "\n• "+ now_playing
+        msg = "**Yürütülen Şarkılar** di {}".format(cb.message.chat.title)
+        msg += "\n• "+ Talep eden kişi 
         msg += "\n• İstek üzerine "+by
         temp.pop(0)
         if temp:
@@ -591,7 +591,7 @@ async def play(_, message: Message):
             while j < 5:
                 toxxt += f"{emojilist[j]} [{results[j]['title']}](https://youtube.com{results[j]['url_suffix']})</b>\n"
                 toxxt += f" ├• **Duration** - {results[j]['duration']}\n"
-                toxxt += f" └• Güçlendirilmiş SesMusicAsistan\n\n"
+                toxxt += f" └• Güçlendirilmiş ProMusicAsistan\n\n"
 
                 j += 1            
             koyboard = InlineKeyboardMarkup(
@@ -665,8 +665,8 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption = f"🏷 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Sıraya Alma `{position}`\n" \
-                    + f"🎧 **İstek:** {message.from_user.mention}",
+            caption = f"🎴 **Parçanın ismi:** [{title[:30]}]({url})\n⏱ **Parçanın süresi:** {duration}\n💡 **Durum:** Sıraya Alındı `{position}`\n" \
+                    + f"🎧 **Talep eden kişi:** {message.from_user.mention}",
                    reply_markup=keyboard)
        
     else:
@@ -685,8 +685,8 @@ async def play(_, message: Message):
             return
         await message.reply_photo(
             photo="final.png",
-            caption = f"🏷 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Oynatılıyor\n" \
-                    + f"🎧 **İstek:** {message.from_user.mention}",
+            caption = f"🎴 **Parçanın ismi:** [{title[:30]}]({url})\n⏱ **Parçanın süresi:** {duration}\n🔊 **Durum:** Oynatılıyor\n" \
+                    + f"🎧 **Talep eden kişi:** {message.from_user.mention}",
                    reply_markup=keyboard)
 
     os.remove("final.png")
