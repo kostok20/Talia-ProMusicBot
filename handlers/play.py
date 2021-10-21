@@ -261,7 +261,7 @@ async def p_cb(b, cb):
                 name = song[0]
                 usr = song[1].mention(style="md")
                 msg += f"\n• {name}"
-                msg += f"\n• Req by {usr}\n"
+                msg += f"\n• Talep eden {usr}\n"
         await cb.message.edit(msg)      
 
 
@@ -319,8 +319,8 @@ async def m_cb(b, cb):
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
         msg = "**Yürütülen Şarkılar** di {}".format(cb.message.chat.title)
-        msg += "\n• "+ now_playing 
-        msg += "\n• İstek üzerine "+by
+        msg += "\n• "+ Talep eden kişi
+        msg += "\n• now_playing "+by
         temp.pop(0)
         if temp:
              msg += "\n\n"
@@ -768,8 +768,8 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"💡 **Kuyruğa eklenen parça**\n\n🏷 **İsmi:** [{title[:35]}]({url})\n⏱ **Süre:** `{duration}`\n🎧 **Talep eden:** {r_by.mention}\n" \
-               +f"🔢 **Konumda:** » `{position}` «",
+        caption=f"♻️ **Kuyruğa eklenen parça**\n\n🎴 **İsmi:** [{title[:35]}]({url})\n⏱ **Süre:** `{duration}`\n🎧 **Talep eden kişi:** {r_by.mention}\n" \
+               +f"🔢 **Konumda sıraya alındı:** » `{position}` «",
         reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -789,8 +789,8 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"🏷 **İsmi:** [{title[:35]}]({url})\n⏱ **Süre:** `{duration}`\n💡 **Durum:** `Oynatılıyor`\n" \
-               +f"🎧 **Talep eden:** {r_by.mention}",
+        caption=f"🏷 **Parçanın ismi:** [{title[:35]}]({url})\n⏱ **Parçanın süresi:** `{duration}`\n🔊 **Durum:** `Oynatılıyor`\n" \
+               +f"🎧 **Talep eden kişi:** {r_by.mention}",
         reply_markup=keyboard,
         )
         os.remove("final.png")
