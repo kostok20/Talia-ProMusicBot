@@ -1,29 +1,25 @@
 from os import path
 
-from youtube_dl import YoutubeDL
+from yt_dlp import YoutubeDL
 
 from config import DURATION_LIMIT
 from helpers.errors import DurationLimitError
 
 ydl_opts = {
     "format": "bestaudio[ext=m4a]",
-    "format": "bestaudio/best",
     "geo-bypass": True,
     "nocheckcertificate": True,
     "outtmpl": "downloads/%(id)s.%(ext)s",
 }
 ydl = YoutubeDL(ydl_opts)
+
+
 def download(url: str) -> str:
     info = ydl.extract_info(url, False)
-    duration = round(info["duration"] / 120)
+    duration = round(info["duration"] / 60)
     if duration > DURATION_LIMIT:
         raise DurationLimitError(
-            f"✘ ᴠɪᴅᴇᴏs ʟᴏɴɢᴇʀ ᴛʜᴀɴ {DURATION_LIMIT} ᴍɪɴᴜᴛᴇ(s) ᴀʀᴇɴ'ᴛ ᴀʟʟᴏᴡᴇᴅ, ᴛʜᴇ ᴘʀᴏᴠɪᴅᴇᴅ ᴠɪᴅᴇᴏ ɪs {duration} ᴍɪɴᴜᴛᴇ(s)"
+            f"🛑 Daha uzun videolar 60 dakikalar izin verilmezse, sağlanan video 60 dakikayı aşmamalı"
         )
-    try:
-        ydl.download([url])
-    except:
-        raise DurationLimitError(
-            f"✘ ᴠɪᴅᴇᴏs ʟᴏɴɢᴇʀ ᴛʜᴀɴ {DURATION_LIMIT} ᴍɪɴᴜᴛᴇ(s) ᴀʀᴇɴ'ᴛ ᴀʟʟᴏᴡᴇᴅ, ᴛʜᴇ ᴘʀᴏᴠɪᴅᴇᴅ ᴠɪᴅᴇᴏ ɪs {duration} ᴍɪɴᴜᴛᴇ(s)"
-        )
+    ydl.download([url])
     return path.join("downloads", f"{info['id']}.{info['ext']}")
