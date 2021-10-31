@@ -41,7 +41,7 @@
 - `/liste` - Şimdi çalma listesini göster
 - `/bul <song name>` - istediğiniz şarkıları hızlı bir şekilde indirin
 - `/arama <query>` - youtube'da detayları içeren videoları arayın
-- `/vsong <song adı>` - istediğiniz videoları hızlı bir şekilde indirin
+- `/vbul <song adı>` - istediğiniz videoları hızlı bir şekilde indirin
 
 #### Yalnızca Yöneticiler👷‍♂️
 - `player` - açık müzik çalar ayarları paneli
