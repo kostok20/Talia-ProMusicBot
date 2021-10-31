@@ -245,22 +245,22 @@ def time_to_seconds(time):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
-@Client.on_message(filters.command(["vsong", "video"]))
+@Client.on_message(filters.command(["vbul", "video"]))
 async def ytmusic(client, message: Message):
     global is_downloading
     if is_downloading:
         await message.reply_text(
-            "❗ Another download is in progress, try again after sometime."
+            "❗ Başka bir indirme devam ediyor, bir süre sonra yeniden deneyin."
         )
         return
 
     urlissed = get_text(message)
 
     pablo = await client.send_message(
-        message.chat.id, f"💡 __Getting {urlissed} from youtube server, please wait...__"
+        message.chat.id, f"💡 __Aranıyor {urlissed} youtube sunucusundan, lütfen bekleyin...__"
     )
     if not urlissed:
-        await pablo.edit("Invalid command syntax, please check help menu to know more!")
+        await pablo.edit("Geçersiz komut sözdizimi, daha fazla şey öğrenmek için lütfen yardım menüsünü kontrol edin!")
         return
 
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
@@ -320,7 +320,7 @@ async def ytmusic(client, message: Message):
         progress_args=(
             pablo,
             c_time,
-            f"`📤 Uploading {urlissed} song from youtube music!`",
+            f"`📤 Yükleme {urlissed} youtube müziğinden şarkı!`",
             file_stark,
         ),
     )
