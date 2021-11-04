@@ -39,7 +39,7 @@ def cb_admin_check(func: Callable) -> Callable:
         if cb.from_user.id in admemes:
             return await func(client, cb)
         else:
-            await cb.answer("Bunu yapmana izin verilmiyor.!", show_alert=True)
+            await cb.answer("Sadece yöneticiler.!", show_alert=True)
             return
     return decorator                                                                       
                                           
@@ -141,9 +141,9 @@ def updated_stats(chat, queue, vol=100):
         if len(que) > 0:
             stats += "\n\n"
             stats += "🎚️ Ses: {}%\n".format(vol)
-            stats += "🎛️ Sıradaki şarkılar: `{}`\n".format(len(que))
-            stats += "🤦‍♀️ Talep eden: **{}**\n".format(queue[0][0])
-            stats += "🤫 İstek üzerine: {}".format(queue[0][1].mention)
+            stats += "🎶 Sıradaki şarkılar: `{}`\n".format(len(que))
+            stats += "🤦‍♀️ Sanatcının ismi: **{}**\n".format(queue[0][0])
+            stats += "🤫 Talep eden: {}".format(queue[0][1].mention)
     else:
         stats = None
     return stats
