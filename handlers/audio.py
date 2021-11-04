@@ -1,3 +1,6 @@
+# İster "https://t.me/{ASSISTANT_NAME}" Şeklinde yapın... App.json içini deki yerleri doldurun.. 
+# Yazdım örnek gibi de yapabilirsiniz. Katılmak için @SohbetDestek 
+
 from os import path
 
 from pyrogram import Client
@@ -27,7 +30,7 @@ async def oynat(_, message: Message):
         [
             [
                 InlineKeyboardButton(
-                    text="📣 Resmi Kanal", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    text="📣 RESMİ KANAL", url=f"https://t.me/Sohbetdestek"
                 ),
             ]
         ]
