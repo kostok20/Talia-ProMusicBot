@@ -1,5 +1,3 @@
-# Copyright (C) 2021 By CyberProject
-
 import os
 from config import OWNER_NAME, UPDATES_CHANNEL, GROUP_SUPPORT, BOT_NAME, DEV_NAME
 class Messages():
