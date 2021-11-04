@@ -11,11 +11,11 @@ logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
-@app.on_message(command(["search", f"search@Efsanestar_bot"]))
+@app.on_message(command(["ara", f"search@Efsanestar_bot"]))
 async def ytsearch(_, message: Message):
     try:
         if len(message.command) < 2:
-            await message.reply_text("/aramanın bağımsız değişkene ihtiyacı var!")
+            await message.reply_text("Bana arayacağım, Şarkı ismi yazınız.!")
             return
         query = message.text.split(None, 1)[1]
         m = await message.reply_text("🔎 **Arıyorum**")
@@ -23,7 +23,7 @@ async def ytsearch(_, message: Message):
         i = 0
         text = ""
         while i < 5:
-            text += f"**Başlık:** `{results[i]['title']}`\n"
+            text += f"**İsmi:** `{results[i]['title']}`\n"
             text += f"**Süre:** {results[i]['duration']}\n"
             text += f"**Görünümler:** {results[i]['views']}\n"
             text += f"**Kanal:** {results[i]['channel']}\n"
