@@ -5,10 +5,10 @@ from pyrogram.types import Message, Voice
 
 from callsmusic import callsmusic, queues
 
-import converter
+from converter import converter
 from downloaders import youtube
 
-from config import BOT_NAME as bn, DURATION_LIMIT, UPDATES_CHANNEL, AUD_IMG, QUE_IMG, OWNER_NAME
+from config import BOT_NAME as bn, DURATION_LIMIT, UPDATES_CHANNEL,SUPPORT_GROUP
 from helpers.filters import command, other_filters
 from helpers.decorators import errors
 from helpers.errors import DurationLimitError
@@ -19,22 +19,20 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 @errors
 async def oynat(_, message: Message):
 
-    lel = await message.reply("🔄 **Sesler işleniyor** 🔥...")
+    lel = await message.reply("🔁 **Başlatılıyor**.. 🔥")
     sender_id = message.from_user.id
     sender_name = message.from_user.first_name
 
     keyboard = InlineKeyboardMarkup(
+        [
             [
-                [
-                    InlineKeyboardButton(
-                        text="📣 Kanal",
-                        url=f"https://t.me/SohbetDestek"),
-                    InlineKeyboardButton(
-                        text="🌀 Asistan",
-                        url=f"https://t.me/SesMusicAsistan")
-                ]
+                InlineKeyboardButton(
+                    text="📣 Resmi Kanal", url=f"https://t.me/{UPDATES_CHANNEL}"
+                ),
             ]
-        )
+        ]
+    )
+
 
     audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
     url = get_url(message)
@@ -42,7 +40,7 @@ async def oynat(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"✘ Daha uzun Mp3 formatlarını {DURATION_LIMIT} vermeyin kısa süreli şeyler veriniz !"
+                f"❌ Daha uzun videolar {DURATION_LIMIT} dakikaların oynamasına izin verilmez!"
             )
 
         file_name = get_file_name(audio)
@@ -53,21 +51,22 @@ async def oynat(_, message: Message):
     elif url:
         file_path = await converter.convert(youtube.download(url))
     else:
-        return await lel.edit_text("♨ Bana oynatılacak bişey veriniz!")
+        return await lel.edit_text("Bana ses dosyası veya yt bağlantısı vermediniz!")
 
     if message.chat.id in callsmusic.pytgcalls.active_calls:
         position = await queues.put(message.chat.id, file=file_path)
+        costumer = message.from_user.mention
         await message.reply_photo(
-        photo=f"{QUE_IMG}",
+        photo=f"https://telegra.ph/file/06128b8298df70f2d3c5f.jpg",
         reply_markup=keyboard,
-        caption=f"#↪️ Talep edilen parça **Sıraya** alındı {position}!\n\n🔊 YouTube Müzik aracılığıyla {bn}")
+        caption=f"💡 **Sıraya  alınan parça **\n\n🎧 **İstek**: {costumer}\n🔢 **Parça konumu**: » `{position}` «")
         return await lel.delete()
     else:
         callsmusic.pytgcalls.join_group_call(message.chat.id, file_path)
         costumer = message.from_user.mention
         await message.reply_photo(
-        photo=f"{AUD_IMG}",
+        photo=f"https://telegra.ph/file/06128b8298df70f2d3c5f.jpg",
         reply_markup=keyboard,
-        caption=f"🔊 **Oynatılıyor** Talep Edilen parça tarafınızdan {costumer} !\n\n🔊 YouTube Müzik aracılığıyla {bn}"
-        )   
+        caption=f"💡 **Durum**: **Oynatılıyor**\n\n🎧 **İstek:**: {costumer}\n🎛️ **Talia müzik tarafından** Keyifli Dinlemeler 🥰"
+        )
         return await lel.delete()
