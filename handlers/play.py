@@ -120,7 +120,7 @@ async def playlist(client, message):
         temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style="md")
-    msg = "**Çalınan Şarkılar** di {}".format(message.chat.title)
+    msg = "**Yürütülen Şarkılar** di {}".format(message.chat.title)
     msg += "\n• "+ now_playing
     msg += "\n• İstek üzerine "+by
     temp.pop(0)
@@ -134,16 +134,16 @@ async def playlist(client, message):
             msg += f"\n• Atas permintaan {usr}\n"
     await message.reply_text(msg)
 
-# ============================= Settings =========================================
+# ============================= Ayarlara Hoşgeldin =========================================
 def updated_stats(chat, queue, vol=100):
     if chat.id in callsmusic.pytgcalls.active_calls:
         stats = "Ayarlar **{}**".format(chat.title)
         if len(que) > 0:
             stats += "\n\n"
-            stats += "Ses: {}%\n".format(vol)
-            stats += "Sırada şarkılar: `{}`\n".format(len(que))
-            stats += "Şarkı çalma: **{}**\n".format(queue[0][0])
-            stats += "İstek üzerine: {}".format(queue[0][1].mention)
+            stats += "🎚️ Ses: {}%\n".format(vol)
+            stats += "🎛️ Sıradaki şarkılar: `{}`\n".format(len(que))
+            stats += "🤦‍♀️ Talep eden: **{}**\n".format(queue[0][0])
+            stats += "🤫 İstek üzerine: {}".format(queue[0][1].mention)
     else:
         stats = None
     return stats
@@ -318,7 +318,7 @@ async def m_cb(b, cb):
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "**Çalınan Şarkılar** di {}".format(cb.message.chat.title)
+        msg = "**Yürütülen Şarkılar** di {}".format(cb.message.chat.title)
         msg += "\n• "+ now_playing
         msg += "\n• İstek üzerine "+by
         temp.pop(0)
@@ -401,7 +401,7 @@ async def m_cb(b, cb):
                 await cb.answer("Atlatıldı")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
-                    f"⫸ Atlanan parça\n⫸ Şimdi Oynatılıyor: **{qeue[0][0]}**"
+                    f"⫸ Atlatılan parça\n⫸ Şimdi Oynatılıyor: **{qeue[0][0]}**"
                 )
 
     elif type_ == "son":
@@ -467,7 +467,7 @@ async def play(_, message: Message):
                 except Exception:
                     # print(e)
                     await lel.edit(
-                        f"<b>⛑ Flood Wait Error! ⛑\n{user.first_name} userbot için katılma isteği nedeniyle grubunuza katılamıyor! Kullanıcıların gruplar halinde yasaklanmamasını sağlama."
+                        f"<b>⛑ Taşan Bekleme Hatası! ⛑\n{user.first_name} userbot için katılma isteği nedeniyle grubunuza katılamıyor! Kullanıcıların gruplar halinde yasaklanmamasını sağlama."
                         f"\n\nVeya @Sesmusicasistan grubunuza el ile el ile ve yeniden deneyin</b>",
                     )
     try:
@@ -511,7 +511,7 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("⚙️ Butonlar", callback_data="menü"),
+                    InlineKeyboardButton("⏏️ Butonlar", callback_data="menü"),
                     InlineKeyboardButton("❌ Kapat", callback_data="cls"),
                 ],[
                     InlineKeyboardButton("📣 Kanal", url=f"https://t.me/Sohbetdestek")
@@ -559,7 +559,7 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("⚙️ Butonlar", callback_data="menu"),
+                    InlineKeyboardButton("⏏️ Butonlar", callback_data="menu"),
                     InlineKeyboardButton("❌ Kapat", callback_data="cls"),
                 ],[
                     InlineKeyboardButton("📣 Kanal", url=f"https://t.me/Sohbetdestek")
@@ -607,7 +607,7 @@ async def play(_, message: Message):
           
                     ],
                     [
-                        InlineKeyboardButton(text="❌ Kapat", callback_data="cls")],
+                        InlineKeyboardButton(text="⛔ Kapat", callback_data="cls")],
                 ]
             )
      
@@ -644,7 +644,7 @@ async def play(_, message: Message):
             keyboard = InlineKeyboardMarkup(
                     [
                 [
-                    InlineKeyboardButton("⚙️ Butonlar", callback_data="menü"),
+                    InlineKeyboardButton("⏏️ Butonlar", callback_data="menü"),
                     InlineKeyboardButton("❌ Kapat", callback_data="cls"),
                 ],[
                     InlineKeyboardButton("📣 Kanal", url=f"https://t.me/Sohbetdestek")
@@ -665,7 +665,7 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption = f"🎴 **Parçanın ismi:** [{title[:30]}]({url})\n⏱ **Şarkının süresi:** {duration}\n♻️ **Durum:** Sıraya Alındı `{position}`\n" \
+            caption = f"🎵 **Parçanın ismi:** [{title[:30]}]({url})\n⏱ **Şarkının süresi:** {duration}\n♻️ **Durum:** Sıraya Alındı `{position}`\n" \
                     + f"🎧 **Talep eden kişi:** {message.from_user.mention}",
                    reply_markup=keyboard)
        
@@ -743,7 +743,7 @@ async def lol_cb(b, cb):
     keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("⚙️ Butonlar", callback_data="menü"),
+                    InlineKeyboardButton("⏏️ Butonlar", callback_data="menü"),
                     InlineKeyboardButton("❌ Kapat", callback_data="cls"),
                 ],[
                     InlineKeyboardButton("📣 Kanal", url=f"https://t.me/Sohbetdestek")
@@ -768,7 +768,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"🌀 **Sıraya eklenen parça**\n\n🎴 **İsmi:** [{title[:35]}]({url})\n⏱ **Şarkının süresi:** `{duration}`\n🎧 **Talep eden kişi:** {r_by.mention}\n" \
+        caption=f"🌀 **Sıraya eklenen parça**\n\n🎵 **İsmi:** [{title[:35]}]({url})\n⏱ **Şarkının süresi:** `{duration}`\n🎧 **Talep eden kişi:** {r_by.mention}\n" \
                +f"🔢 **Konumda sıraya alındı:** » `{position}` «",
         reply_markup=keyboard,
         )
