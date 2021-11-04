@@ -797,19 +797,19 @@ async def lol_cb(b, cb):
  
 
 
-@Client.on_message(filters.command(["ytplay", "ytp"]) & filters.group & ~filters.edited)
+@Client.on_message(filters.command(["ytp", "ytplay"]) & filters.group & ~filters.edited)
 async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔄 **Şarkı İşleniyor...**")
+    lel = await message.reply("🔄 <b>Processing</b>")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "EXProject"
+        user.first_name = "helper"
     usar = user
     wew = usar.id
     try:
@@ -818,26 +818,26 @@ async def ytplay(_, message: Message):
     except:
         for administrator in administrators:
             if administrator == message.from_user.id:
-                if message.chat.title.startswith("Kanal Müziği: "):
+                if message.chat.title.startswith("Channel Music: "):
                     await lel.edit(
-                        f"<b>Eklemeyi unutmayın {user.first_name} kanalınıza</b>",
+                        "<b>Remember to add helper to your channel</b>",
                     )
                     pass
                 try:
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>Önce beni grup yöneticiniz olarak ekle</b>",
+                        "<b>Add me as admin of yor group first</b>",
                     )
                     return
 
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "`Sesli sohbette şarkı çalmak için bu gruba katıldım.`"
+                        message.chat.id, "I joined this group for playing music in VC"
                     )
                     await lel.edit(
-                        "<b>yardımcı userbot sohbetinize katıldı</b>",
+                        "<b>helper userbot joined your chat</b>",
                     )
 
                 except UserAlreadyParticipant:
@@ -845,18 +845,18 @@ async def ytplay(_, message: Message):
                 except Exception:
                     # print(e)
                     await lel.edit(
-                        f"<b>Taşan Bekleme Hatası!\n{user.first_name} userbot için katılma isteği nedeniyle grubunuza katılamıyor! Kullanıcıların gruplar halinde yasaklanmamasını sağlama."
-                        f"\n\nVeya ekleyin @{ASSISTANT_NAME} gruba el ile el ile ve yeniden deneyin</b>",
+                        f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
+                        "\n\nOr manually add assistant to your Group and try again</b>",
                     )
     try:
         await USER.get_chat(chid)
         # lmoa = await client.get_chat_member(chid,wew)
     except:
         await lel.edit(
-            f"<i>{user.first_name} Bu Grubun yasağından etkilenerek, yöneticiden bir komut göndermesini isteyin `/play` ilk kez veya ekleyin @{ASSISTANT_NAME} Elle</i>"
+            f"<i> {user.first_name} Userbot not in this chat, Ask admin to send /play command for first time or add {user.first_name} manually</i>"
         )
         return
-    await lel.edit("🔎 **Şarkı arıyorum..**")
+    await lel.edit("🔎 <b>Finding</b>")
     user_id = message.from_user.id
     user_name = message.from_user.first_name
      
@@ -865,13 +865,13 @@ async def ytplay(_, message: Message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    await lel.edit("🎵 **İşleme alınıyor..**")
+    await lel.edit("🎵 <b>Processing</b>")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         url = f"https://youtube.com{results[0]['url_suffix']}"
         # print(results)
-        title = results[0]["title"][:25]
+        title = results[0]["title"][:40]
         thumbnail = results[0]["thumbnails"][0]
         thumb_name = f"thumb{title}.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
@@ -882,27 +882,40 @@ async def ytplay(_, message: Message):
 
     except Exception as e:
         await lel.edit(
-            "**Şarkı bulunamadı.** Daha net bir başlık parçası aramayı deneyin, Yaz `/help` Yardıma ihtiyacın olursa."
+            "Song not found.Try another song or maybe spell it properly."
         )
         print(str(e))
         return
+    try:    
+        secmul, dur, dur_arr = 1, 0, duration.split(':')
+        for i in range(len(dur_arr)-1, -1, -1):
+            dur += (int(dur_arr[i]) * secmul)
+            secmul *= 60
+        if (dur / 60) > DURATION_LIMIT:
+             await lel.edit(f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!")
+             return
+    except:
+        pass    
     dlurl=url
     dlurl=dlurl.replace("youtube","youtubepp")
     keyboard = InlineKeyboardMarkup(
+        [
             [
-                [
-                    InlineKeyboardButton("⏏️ Menü", callback_data="menu"),
-                    InlineKeyboardButton("⛔ Kapat", callback_data="cls"),
-                ],[
-                    InlineKeyboardButton("📣 Official Channel", url=f"https://t.me/Sohbetdestek")
-                ],
-            ]
-        )
+                InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
+                InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+            ],
+            [
+                InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
+                InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
+            ],
+            [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+        ]
+    )
     requested_by = message.from_user.first_name
     await generate_cover(requested_by, title, views, duration, thumbnail)
-    file_path = await convert(youtube.download(url)) 
+    file_path = await convert(youtube.download(url))
     chat_id = get_chat_id(message.chat)
-    if chat_id in callsmusic.pytgcalls.active_calls:
+    if chat_id in callsmusic.active_chats:
         position = await queues.put(chat_id, file=file_path)
         qeue = que.get(chat_id)
         s_name = title
@@ -912,9 +925,8 @@ async def ytplay(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption = f"🏷 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Sıraya Alma `{position}`\n" \
-                    + f"🎧 **İstek:** {message.from_user.mention}",
-                   reply_markup=keyboard,
+            caption=f"#⃣ Your requested song <b>queued</b> at position {position}!",
+            reply_markup=keyboard,
         )
         os.remove("final.png")
         return await lel.delete()
@@ -928,14 +940,16 @@ async def ytplay(_, message: Message):
         appendable = [s_name, r_by, loc]
         qeue.append(appendable)
         try:
-            callsmusic.pytgcalls.join_group_call(chat_id, file_path)
+           await callsmusic.set_stream(chat_id, file_path)
         except:
-            message.reply("**Sesli Sohbet Grubu kapalı, katılamıyorum**")
+            message.reply("Group Call is not connected or I can't join it")
             return
         await message.reply_photo(
             photo="final.png",
-            caption = f"🏷 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Oynatılıyor\n" \
-                    + f"🎧 **İstenen:** {message.from_user.mention}",
-                   reply_markup=keyboard,)
+            reply_markup=keyboard,
+            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music 😎".format(
+                message.from_user.mention()
+            ),
+        )
         os.remove("final.png")
         return await lel.delete()
