@@ -93,7 +93,7 @@ async def atla(_, message: Message):
         skip = qeue.pop(0)
     if not qeue:
         return
-    await message.reply_text(f"✘ Atlatıldı: **{skip[0]}**\n✔ şimdi Oynatılıyor: **{qeue[0][0]}**")
+    await message.reply_text(f"✘ Atlatıldı: **{skip[0]}**\n✔ Şimdi oynatılıyor: **{qeue[0][0]}**")
 
 
 @Client.on_message(filters.command("ver"))
