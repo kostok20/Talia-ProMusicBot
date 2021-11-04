@@ -8,7 +8,7 @@ from callsmusic import callsmusic, queues
 from converter import converter
 from downloaders import youtube
 
-from config import BOT_NAME, DURATION_LIMIT, UPDATES_CHANNEL,SUPPORT_GROUP
+from config import BOT_NAME, DURATION_LIMIT, UPDATES_CHANNEL,GROUP_SUPPORT
 from helpers.filters import command, other_filters
 from helpers.decorators import errors
 from helpers.errors import DurationLimitError
