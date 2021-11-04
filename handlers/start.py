@@ -35,7 +35,7 @@ async def start_(client: Client, message: Message):
         f"""<b>✨ **Merhabalar {message.from_user.first_name}** \n
 🎯 **[Talia Müzik](https://t.me/Sohbetdestek) Telegramın Sesli sohbetinde bana, Müzik çalmam için izin veriniz.**
 
-🔮 **Üzerine tıklayarak komutları çalıştırın ve ögreniniz. » 📚 Help!**
+🔮 **Üzerine tıklayarak komutları çalıştırın ve ögreniniz. (Zamanla ögrenilir. 😁)**
 
 ❓ **Bu botun tüm özellikleri hakkında bilgi almak için, basınız. /help**
 
@@ -60,7 +60,7 @@ async def start_(client: Client, message: Message):
                         "▶️ Mp3 Botu", url=f"https://t.me/Mp3_aramaBot")               
                  ],[
                     InlineKeyboardButton(
-                        "📃 Kaynak Kodu 📃", url="https://github.com/Mehmetbaba55"
+                        "⛔ Repo Bilgisi", url="https://github.com/Mehmetbaba55"
                     )
                 ]
             ]
@@ -150,7 +150,7 @@ async def help_(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "☣ Grub", url=f"https://t.me/kurtadamoyunuu"
+                        "☣ Grub", url=f"https://t.me/Sohbetskyfall"
                     ),
                     InlineKeyboardButton(
                         "📣 Kanal", url=f"https://t.me/SohbetDestek"
