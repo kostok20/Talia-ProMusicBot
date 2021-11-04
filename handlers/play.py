@@ -795,3 +795,147 @@ async def lol_cb(b, cb):
         )
         os.remove("final.png")
  
+
+
+@Client.on_message(filters.command(["ytplay", "ytp"]) & filters.group & ~filters.edited)
+async def ytplay(_, message: Message):
+    global que
+    if message.chat.id in DISABLED_GROUPS:
+        return
+    lel = await message.reply("🔄 **Şarkı İşleniyor...**")
+    administrators = await get_administrators(message.chat)
+    chid = message.chat.id
+
+    try:
+        user = await USER.get_me()
+    except:
+        user.first_name = "EXProject"
+    usar = user
+    wew = usar.id
+    try:
+        # chatdetails = await USER.get_chat(chid)
+        await _.get_chat_member(chid, wew)
+    except:
+        for administrator in administrators:
+            if administrator == message.from_user.id:
+                if message.chat.title.startswith("Kanal Müziği: "):
+                    await lel.edit(
+                        f"<b>Eklemeyi unutmayın {user.first_name} kanalınıza</b>",
+                    )
+                    pass
+                try:
+                    invitelink = await _.export_chat_invite_link(chid)
+                except:
+                    await lel.edit(
+                        "<b>Önce beni grup yöneticiniz olarak ekle</b>",
+                    )
+                    return
+
+                try:
+                    await USER.join_chat(invitelink)
+                    await USER.send_message(
+                        message.chat.id, "`Sesli sohbette şarkı çalmak için bu gruba katıldım.`"
+                    )
+                    await lel.edit(
+                        "<b>yardımcı userbot sohbetinize katıldı</b>",
+                    )
+
+                except UserAlreadyParticipant:
+                    pass
+                except Exception:
+                    # print(e)
+                    await lel.edit(
+                        f"<b>Taşan Bekleme Hatası!\n{user.first_name} userbot için katılma isteği nedeniyle grubunuza katılamıyor! Kullanıcıların gruplar halinde yasaklanmamasını sağlama."
+                        f"\n\nVeya ekleyin @{ASSISTANT_NAME} gruba el ile el ile ve yeniden deneyin</b>",
+                    )
+    try:
+        await USER.get_chat(chid)
+        # lmoa = await client.get_chat_member(chid,wew)
+    except:
+        await lel.edit(
+            f"<i>{user.first_name} Bu Grubun yasağından etkilenerek, yöneticiden bir komut göndermesini isteyin `/play` ilk kez veya ekleyin @{ASSISTANT_NAME} Elle</i>"
+        )
+        return
+    await lel.edit("🔎 **Şarkı arıyorum..**")
+    user_id = message.from_user.id
+    user_name = message.from_user.first_name
+     
+
+    query = ""
+    for i in message.command[1:]:
+        query += " " + str(i)
+    print(query)
+    await lel.edit("🎵 **İşleme alınıyor..**")
+    ydl_opts = {"format": "bestaudio[ext=m4a]"}
+    try:
+        results = YoutubeSearch(query, max_results=1).to_dict()
+        url = f"https://youtube.com{results[0]['url_suffix']}"
+        # print(results)
+        title = results[0]["title"][:25]
+        thumbnail = results[0]["thumbnails"][0]
+        thumb_name = f"thumb{title}.jpg"
+        thumb = requests.get(thumbnail, allow_redirects=True)
+        open(thumb_name, "wb").write(thumb.content)
+        duration = results[0]["duration"]
+        results[0]["url_suffix"]
+        views = results[0]["views"]
+
+    except Exception as e:
+        await lel.edit(
+            "**Şarkı bulunamadı.** Daha net bir başlık parçası aramayı deneyin, Yaz `/help` Yardıma ihtiyacın olursa."
+        )
+        print(str(e))
+        return
+    dlurl=url
+    dlurl=dlurl.replace("youtube","youtubepp")
+    keyboard = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("⏏️ Menü", callback_data="menu"),
+                    InlineKeyboardButton("⛔ Kapat", callback_data="cls"),
+                ],[
+                    InlineKeyboardButton("📣 Official Channel", url=f"https://t.me/Sohbetdestek")
+                ],
+            ]
+        )
+    requested_by = message.from_user.first_name
+    await generate_cover(requested_by, title, views, duration, thumbnail)
+    file_path = await convert(youtube.download(url))
+    chat_id = get_chat_id(message.chat)
+    if chat_id in callsmusic.pytgcalls.active_calls:
+        position = await queues.put(chat_id, file=file_path)
+        qeue = que.get(chat_id)
+        s_name = title
+        r_by = message.from_user
+        loc = file_path
+        appendable = [s_name, r_by, loc]
+        qeue.append(appendable)
+        await message.reply_photo(
+            photo="final.png",
+            caption = f"🏷 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Sıraya Alma `{position}`\n" \
+                    + f"🎧 **İstek:** {message.from_user.mention}",
+                   reply_markup=keyboard,
+        )
+        os.remove("final.png")
+        return await lel.delete()
+    else:
+        chat_id = get_chat_id(message.chat)
+        que[chat_id] = []
+        qeue = que.get(chat_id)
+        s_name = title
+        r_by = message.from_user
+        loc = file_path
+        appendable = [s_name, r_by, loc]
+        qeue.append(appendable)
+        try:
+            callsmusic.pytgcalls.join_group_call(chat_id, file_path)
+        except:
+            message.reply("**Sesli Sohbet Grubu kapalı, katılamıyorum**")
+            return
+        await message.reply_photo(
+            photo="final.png",
+            caption = f"🏷 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Oynatılıyor\n" \
+                    + f"🎧 **İstenen:** {message.from_user.mention}",
+                   reply_markup=keyboard,)
+        os.remove("final.png")
+        return await lel.delete()
