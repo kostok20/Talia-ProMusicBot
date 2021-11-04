@@ -417,9 +417,9 @@ async def m_cb(b, cb):
             await cb.answer("assistan sesli sohbete bağlı değil!", show_alert=True)
 
 
-@Client.on_message(command(["oynat", f"oynat@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
 @authorized_users_only
-async def oynat(_, message: Message):
+async def play(_, message: Message):
     global que
     global useer
     if message.chat.id in DISABLED_GROUPS:
@@ -739,13 +739,13 @@ async def lol_cb(b, cb):
     keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🖱 ᴍᴇɴᴜ", callback_data="menu"),
-                    InlineKeyboardButton("🗑 ᴄʟᴏsᴇ", callback_data="cls"),
+                    InlineKeyboardButton("⏏️ Butonlar", callback_data="menü"),
+                    InlineKeyboardButton("❌ Kapat", callback_data="cls"),
                 ],[
-                    InlineKeyboardButton("📣 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}")
+                    InlineKeyboardButton("📣 Kanal", url=f"https://t.me/Sohbetdestek")
                 ],
             ]
-    )
+        )
     requested_by = useer_name
     await generate_cover(title, thumbnail)
     file_path = await converter.convert(youtube.download(url))  
@@ -794,9 +794,9 @@ async def lol_cb(b, cb):
             os.remove("final.png")
 
 
-@Client.on_message(command(["cal", f"ytp@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["ytplay", f"ytp@{BOT_USERNAME}"]) & other_filters)
 @authorized_users_only
-async def calplay(_, message: Message):
+async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
         return
