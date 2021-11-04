@@ -107,7 +107,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
     os.remove("background.png")
 
 
-@Client.on_message(command(["playlist", f"playlist@Efsanestar_bot"]) & filters.group & ~filters.edited)
+@Client.on_message(command(["playlist", "bilgi"]) & filters.group & ~filters.edited)
 async def playlist(client, message):
     global que
     if message.chat.id in DISABLED_GROUPS:
@@ -172,7 +172,7 @@ def r_ply(type_):
     return mar
 
 
-@Client.on_message(command(["player", f"player@Mp3dinleme_Bot"]) & filters.group & ~filters.edited)
+@Client.on_message(command(["player"]) & filters.group & ~filters.edited)
 @authorized_users_only
 async def settings(client, message):
     playing = None
@@ -418,7 +418,7 @@ async def m_cb(b, cb):
 
 
 
-@Client.on_message(command("play") & other_filters)
+@Client.on_message(command(["play", "arama"]) & other_filters)
 async def play(_, message: Message):
     global que
     global useer
@@ -431,7 +431,7 @@ async def play(_, message: Message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "EXProjects"
+        user.first_name = "Talia-Müzik"
     usar = user
     wew = usar.id
     try:
