@@ -40,7 +40,7 @@
 - `/oynat` Mp3 formatı Deezer dan atılan müzikleri oynatır. 
 - `/liste` - Şimdi çalma listesini göster
 - `/bul <song name>` - istediğiniz şarkıları hızlı bir şekilde indirin
-- `/arama <query>` - youtube'da detayları içeren videoları arayın
+- `/ara <query>` - youtube'da detayları içeren videoları arayın
 - `/vbul <song adı>` - istediğiniz videoları hızlı bir şekilde indirin
 
 #### Yalnızca Yöneticiler👷‍♂️
