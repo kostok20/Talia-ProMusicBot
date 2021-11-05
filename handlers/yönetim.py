@@ -95,7 +95,7 @@ async def atla(_, message: Message):
     await message.reply_text(f"✘ Atlatıldı: **{skip[0]}**\n✔️ Şimdi oynatılıyor: **{qeue[0][0]}**")
 
 
-@Client.on_message(filters.command(["ver", "auth"))
+@Client.on_message(filters.command(["ver", "auth"]))
 @authorized_users_only
 async def authenticate(client, message):
     global admins
