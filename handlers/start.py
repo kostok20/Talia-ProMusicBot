@@ -35,11 +35,11 @@ async def start_(client: Client, message: Message):
         f"""<b>✨ **Merhabalar {message.from_user.first_name}** \n
 🎯 **[Talia Müzik](https://t.me/Sohbetdestek) Telegramın Sesli sohbetinde bana, Müzik çalmam için izin veriniz.**
 
-🔮 **Üzerine tıklayarak komutları çalıştırın ve ögreniniz. (Zamanla ögrenilir. 😁)**
+🔮 **Üzerine tıklayarak komutları çalıştırın ve ögreniniz.**
 
 ❓ **Bu botun tüm özellikleri hakkında bilgi almak için, basınız. /help**
 
-🔉 **Sesli sohbetlerde müzik çalmak için, [Talia Resmi Kanal](hptts://t.me/Sohbetdestek) Tarafından yapılmıştır.**
+🔉 **Sesli sohbetlerde müzik çalmak için, [Talia Resmi Kanal](https://t.me/Sohbetdestek) Tarafından yapılmıştır.**
 </b>""",
         reply_markup=InlineKeyboardMarkup(
             [ 
