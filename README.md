@@ -15,7 +15,7 @@
 - Python 3.8+ or 3.7
 - [PyTgCalls](https://github.com/pytgcalls/pytgcalls)
 
-🧪 Get STRING_SESSION from here:
+📲 Session almak için aşağıdaki butona tıkla:
 
 [![GenerateString](https://img.shields.io/badge/repl.it-generateString-yellowgreen)](https://replit.com/@levinalab/StringSession#main.py)
 ### [Session bot ile almak](https://t.me/Sitringsison_bot)
