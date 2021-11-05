@@ -17,17 +17,17 @@
         "BOT_NAME": {
             "description": "müzik botu adınız.",
             "required": false,
-            "value": ""
+            "value": "TaliaMüzik"
         },
         "BOT_USERNAME": {
             "description": "bot kullanıcı adınızla doldurmadan @",
             "required": true,
-            "value": ""
+            "value": "ProMaxMusic_bot"
         },
         "ASSISTANT_NAME": {
             "description": "yardımcı kullanıcı adı ile doldurma @",
             "required": true,
-            "value": ""
+            "value": "Maxmusic_Asistan"
         },
         "BG_IMAGE": {
             "description": "arka plan resim bağlantınızla doldurma",
@@ -42,7 +42,7 @@
         "OWNER_NAME": {
             "description": "kullanıcı adınızla doldurmadan @",
             "required": false,
-            "value": ""
+            "value": "Error_404_Failed"
         },
         "API_ID": {
             "description": "uygulama kimliğinizden.telegram.org/apps",
@@ -69,12 +69,12 @@
         "UPDATES_CHANNEL": {
             "description": "Kanal kullanıcı adınız ile doldurun, Eğer iznin yoksa.",
             "required": false,
-            "value": ""
+            "value": "Sohbetdestek"
         },
         "GROUP_SUPPORT": {
             "description": "grup kullanıcı adınızla doldurma, Atlamanız yoksa",
             "required": false,
-            "value": ""
+            "value": "TaliaSohbet"
         }
     },
     "buildpacks": [
