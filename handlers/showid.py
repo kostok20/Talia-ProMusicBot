@@ -23,7 +23,7 @@ async def showid(client, message):
         )
         if message.reply_to_message:
             _id += (
-                "<b>Yanıtlanan Kullanıcı Kimliği</b>: "
+                "<b>Kullanıcı Kimliği</b>: "
                 f"<code>{message.reply_to_message.from_user.id}</code>\n"
             )
             file_info = get_file_id(message.reply_to_message)
