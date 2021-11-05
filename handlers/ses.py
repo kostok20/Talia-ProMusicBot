@@ -30,7 +30,7 @@ async def oynat(_, message: Message):
         [
             [
                 InlineKeyboardButton(
-                    text="📣 RESMİ KANAL", url=f"https://t.me/Sohbetdestek"
+                    text="🇹🇷 RESMİ KANAL", url=f"https://t.me/Sohbetdestek"
                 ),
             ]
         ]
@@ -62,7 +62,7 @@ async def oynat(_, message: Message):
         await message.reply_photo(
         photo=f"https://telegra.ph/file/06128b8298df70f2d3c5f.jpg",
         reply_markup=keyboard,
-        caption=f"💡 **Sıraya  alınan parça **\n\n🎧 **İstek**: {costumer}\n🔢 **Parça konumu**: » `{position}` «")
+        caption=f"🔢 **Sıraya  alınan parça **\n\n🎧 **İstek**: {costumer}\n🔢 **Parça konumu**: » `{position}` «")
         return await lel.delete()
     else:
         callsmusic.pytgcalls.join_group_call(message.chat.id, file_path)
@@ -70,6 +70,6 @@ async def oynat(_, message: Message):
         await message.reply_photo(
         photo=f"https://telegra.ph/file/06128b8298df70f2d3c5f.jpg",
         reply_markup=keyboard,
-        caption=f"💡 **Durum**: **Oynatılıyor**\n\n🎧 **İstek:**: {costumer}\n🎛️ **Talia müzik tarafından** Keyifli Dinlemeler 🥰"
+        caption=f"💡 **Durum**: **Oynatılıyor**\n\n🎧 **İstek:**: {costumer}\n🎛️ **Talia müzik tarafından**\nKeyifli Dinlemeler 🥰"
         )
         return await lel.delete()
