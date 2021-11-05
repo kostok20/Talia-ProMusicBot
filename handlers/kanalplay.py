@@ -1,5 +1,3 @@
-# Copyright (C) 2021 VeezMusic Project
-
 import json
 import os
 from os import path
