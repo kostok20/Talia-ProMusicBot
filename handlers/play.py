@@ -533,7 +533,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🎵 **Aranıyor ve İşleniyor...**")
+        await lel.edit("🗃️ **Aranıyor ve İşleniyor...**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -574,7 +574,7 @@ async def play(_, message: Message):
         for i in message.command[1:]:
             query += " " + str(i)
         print(query)
-        await lel.edit("🎵 **İşleme alınıyor..**")
+        await lel.edit("📥 **İndiriyorum..**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         
         try:
@@ -590,8 +590,8 @@ async def play(_, message: Message):
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣"]
             while j < 7:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:25]}](https://youtube.com{results[j]['url_suffix']})\n"
-                toxxt += f" ├ 💡 **Süresi** - {results[j]['duration']}\n"
-                toxxt += f" └ ⚡ __Sizin için En iyisi @SohbetDestek__\n\n"
+                toxxt += f" ├ 🕛 **Süresi** - {results[j]['duration']}\n"
+                toxxt += f" └ 🎶 __Sizin için En iyisi @SohbetDestek__\n\n"
 
                 j += 1            
             koyboard = InlineKeyboardMarkup(
@@ -663,8 +663,8 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption = f"🏷 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Sıraya Alma `{position}`\n" \
-                    + f"🎧 **İstek:** {message.from_user.mention}",
+            caption = f"🎵 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Sıraya Alma `{position}`\n" \
+                    + f"👨‍💼 **İstek:** {message.from_user.mention}",
                    reply_markup=keyboard)
        
     else:
@@ -683,8 +683,8 @@ async def play(_, message: Message):
             return
         await message.reply_photo(
             photo="final.png",
-            caption = f"🏷 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Oynatılıyor\n" \
-                    + f"🎧 **İstek:** {message.from_user.mention}",
+            caption = f🎵🏷 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Oynatılıyor\n" \
+                    + f"👨‍💼 **İstek:** {message.from_user.mention}",
                    reply_markup=keyboard)
 
     os.remove("final.png")
@@ -766,7 +766,7 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"💡 **Kuyruğa eklenen parça**\n\n🏷 **İsmi:** [{title[:35]}]({url})\n⏱ **Süre:** `{duration}`\n🎧 **İstek:** {r_by.mention}\n" \
+        caption=f"💡 **Kuyruğa eklenen parça**\n\n🎵 **İsmi:** [{title[:35]}]({url})\n⏱ **Süre:** `{duration}`\n👨‍💼 **İstek:** {r_by.mention}\n" \
                +f"🔢 **Konumda:** » `{position}` «",
         reply_markup=keyboard,
         )
@@ -787,8 +787,8 @@ async def lol_cb(b, cb):
         await b.send_photo(
         chat_id,
         photo="final.png",
-        caption=f"🏷 **İsmi:** [{title[:35]}]({url})\n⏱ **Süre:** `{duration}`\n💡 **Durum:** `Oynatılıyor`\n" \
-               +f"🎧 **İstek:** {r_by.mention}",
+        caption=f"🎵 **İsmi:** [{title[:35]}]({url})\n⏱ **Süre:** `{duration}`\n💡 **Durum:** `Oynatılıyor`\n" \
+               +f"👨‍💼 **İstek:** {r_by.mention}",
         reply_markup=keyboard,
         )
         os.remove("final.png")
