@@ -401,7 +401,7 @@ async def m_cb(b, cb):
                 await cb.answer("Atlatıldı")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
-                    f"⫸ Atlanan parça\n⫸ Şimdi oynatıyor: **{qeue[0][0]}**"
+                    f"⫸ Atlatılan parça\n⫸ Şimdi oynatıyor: **{qeue[0][0]}**"
                 )
 
     elif type_ == "son":
@@ -479,7 +479,7 @@ async def play(_, message: Message):
         )
         return
     text_links=None
-    await lel.edit("🔁 **Şarkı arıyorum..**")
+    await lel.edit("🔁 **İşleniyor..**")
     if message.reply_to_message:
         entities = []
         toxt = message.reply_to_message.text or message.reply_to_message.caption
@@ -514,7 +514,7 @@ async def play(_, message: Message):
                     InlineKeyboardButton("⏏️ Butonlar", callback_data="menü"),
                     InlineKeyboardButton("❌ Kapat", callback_data="cls"),
                 ],[
-                    InlineKeyboardButton("📣 Kanal", url=f"https://t.me/Sohbetdestek")
+                    InlineKeyboardButton("🇹🇷 Resmi Kanal", url=f"https://t.me/Sohbetdestek")
                 ],
             ]
         )
@@ -533,7 +533,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🎵 **Şarkı devam ediyor...**")
+        await lel.edit("🎵 **Aranıyor ve İşleniyor...**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -562,7 +562,7 @@ async def play(_, message: Message):
                     InlineKeyboardButton("⏏️ Butonlar", callback_data="menü"),
                     InlineKeyboardButton("⛔ Kapat", callback_data="cls"),
                 ],[
-                    InlineKeyboardButton("📣 Kanal", url=f"https://t.me/Sohbetdestek")
+                    InlineKeyboardButton("🇹🇷 Resmi Kanal", url=f"https://t.me/Sohbetdestek")
                 ],
             ]
         )
@@ -645,7 +645,7 @@ async def play(_, message: Message):
                     InlineKeyboardButton("⏏️ Butonlar", callback_data="menü"),
                     InlineKeyboardButton("⛔ Kapat", callback_data="cls"),
                 ],[
-                    InlineKeyboardButton("📣 Kanal", url=f"https://t.me/Sohbetdestek")
+                    InlineKeyboardButton("🇹🇷 Resmi Kanal", url=f"https://t.me/Sohbetdestek")
                 ],
             ]
         )
@@ -663,7 +663,7 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption = f"🏷 **Başlık:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Sıraya Alma `{position}`\n" \
+            caption = f"🏷 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Sıraya Alma `{position}`\n" \
                     + f"🎧 **İstek:** {message.from_user.mention}",
                    reply_markup=keyboard)
        
@@ -683,7 +683,7 @@ async def play(_, message: Message):
             return
         await message.reply_photo(
             photo="final.png",
-            caption = f"🏷 **Başlık:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Oynatılıyor\n" \
+            caption = f"🏷 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Oynatılıyor\n" \
                     + f"🎧 **İstek:** {message.from_user.mention}",
                    reply_markup=keyboard)
 
@@ -744,7 +744,7 @@ async def lol_cb(b, cb):
                     InlineKeyboardButton("⏏️ Butonlar", callback_data="menü"),
                     InlineKeyboardButton("❌ Kapat", callback_data="cls"),
                 ],[
-                    InlineKeyboardButton("📣 Kanal", url=f"https://t.me/kurtadamoyunuu")
+                    InlineKeyboardButton("🇹🇷 Resmi Kanal", url=f"https://t.me/kurtadamoyunuu")
                 ],
             ]
     )
