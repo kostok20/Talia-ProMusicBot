@@ -1,5 +1,4 @@
-# Copyright (C) 2021 TaliaMusicProject
-
+# Admins.py (Yönetim) kontrol.. 
 
 from asyncio import QueueEmpty
 from config import que
@@ -14,7 +13,7 @@ from callsmusic import callsmusic
 from callsmusic.queues import queues
 
 
-@Client.on_message(filters.command("reload"))
+@Client.on_message(filters.command(["reload", "r"]))
 async def update_admin(client, message):
     global admins
     new_admins = []
@@ -22,10 +21,10 @@ async def update_admin(client, message):
     for u in new_ads:
         new_admins.append(u.user.id)
     admins[message.chat.id] = new_admins
-    await message.reply_text("✔ Bot ** Dogru yüklendi! **\n✔ **𝚈önetici listesi** Dogru **Güncellendi!**")
+    await message.reply_text("✔️ Bot ** Dogru yüklendi! **\n✔️ **𝚈önetici listesi** Dogru **Güncellendi!**")
 
 
-@Client.on_message(command("durdur") & other_filters)
+@Client.on_message(command(["durdur", "d"]) & other_filters)
 @errors
 @authorized_users_only
 async def durdur(_, message: Message):
@@ -36,10 +35,10 @@ async def durdur(_, message: Message):
         await message.reply_text("✘ 𝙰𝙺𝙸Ş𝚃𝙰 𝙷İÇ𝙱İ𝚁 Ş𝙴𝚈 𝚈𝙾𝙺!")
     else:
         callsmusic.pytgcalls.pause_stream(chat_id)
-        await message.reply_text("✔ Müzik duraklatıldı!")
+        await message.reply_text("⏸️ Müzik duraklatıldı!")
 
 
-@Client.on_message(command("devam") & other_filters)
+@Client.on_message(command(["devam", "d"]) & other_filters)
 @errors
 @authorized_users_only
 async def devam(_, message: Message):
@@ -50,10 +49,10 @@ async def devam(_, message: Message):
         await message.reply_text("✘ Akış durdurulması..!")
     else:
         callsmusic.pytgcalls.resume_stream(chat_id)
-        await message.reply_text("✔ Müzik Devam Etti!")
+        await message.reply_text("🥳 Müzik Devam Etti!")
 
 
-@Client.on_message(command("son") & other_filters)
+@Client.on_message(command(["son", "s"]) & other_filters)
 @errors
 @authorized_users_only
 async def stop(_, message: Message):
@@ -67,10 +66,10 @@ async def stop(_, message: Message):
             pass
 
         callsmusic.pytgcalls.leave_group_call(chat_id)
-        await message.reply_text("✔ Müzik Kapatıldı.!")
+        await message.reply_text("✔️ Müzik Kapatıldı.!\n **İyi günler dileğiyle 🥰**")
 
 
-@Client.on_message(command("atla") & other_filters)
+@Client.on_message(command(["atla", "a"]) & other_filters)
 @errors
 @authorized_users_only
 async def atla(_, message: Message):
@@ -93,10 +92,10 @@ async def atla(_, message: Message):
         skip = qeue.pop(0)
     if not qeue:
         return
-    await message.reply_text(f"✘ Atlatıldı: **{skip[0]}**\n✔ Şimdi oynatılıyor: **{qeue[0][0]}**")
+    await message.reply_text(f"✘ Atlatıldı: **{skip[0]}**\n✔️ Şimdi oynatılıyor: **{qeue[0][0]}**")
 
 
-@Client.on_message(filters.command("ver"))
+@Client.on_message(filters.command(["ver", "auth"))
 @authorized_users_only
 async def authenticate(client, message):
     global admins
@@ -107,12 +106,12 @@ async def authenticate(client, message):
         new_admins = admins[message.chat.id]
         new_admins.append(message.reply_to_message.from_user.id)
         admins[message.chat.id] = new_admins
-        await message.reply("kullanıcı yetkili.")
+        await message.reply("✔️ Kullanıcı yetkili.")
     else:
-        await message.reply("✔ Kullanıcı Zaten Yetkili!")
+        await message.reply("🛑 Kullanıcı Zaten Yetkili!")
 
 
-@Client.on_message(filters.command("al"))
+@Client.on_message(filters.command(["al", "deauth"]))
 @authorized_users_only
 async def deautenticate(client, message):
     global admins
@@ -125,4 +124,4 @@ async def deautenticate(client, message):
         admins[message.chat.id] = new_admins
         await message.reply("kullanıcı yetkisiz")
     else:
-        await message.reply("✔ Kullanıcının yetkisi alındı!")
+        await message.reply("🛑 Kullanıcının yetkisi alındı!")
