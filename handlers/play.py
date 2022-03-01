@@ -272,7 +272,7 @@ async def p_cb(b, cb):
 async def m_cb(b, cb):
     global que
     if (
-        cb.message.chat.title.startswith("Channel Music: ")
+        cb.message.chat.title.startswith("Kanal Müziği: ")
         and chat.title[14:].isnumeric()
     ):
         chat_id = int(chat.title[13:])
@@ -284,18 +284,18 @@ async def m_cb(b, cb):
     m_chat = cb.message.chat
 
     cb.message.reply_markup.inline_keyboard[0][0].callback_data
-    if type_ == "pause":
+    if type_ == "durdur":
         ACTV_CALLS = []
         for x in callsmusic.pytgcalls.active_calls:
             ACTV_CALLS(int(x.chat_id))
         if int(chat_id) not in ACTV_CALLS:
             await cb.answer(
-                "userbot is not connected to voice chat.", show_alert=True
+                "userbot sesli sohbete bağlı değil.", show_alert=True
             )
         else:
             await callsmusic.pytgcalls.pause_stream(chat_id)
             
-            await cb.answer("music paused")
+            await cb.answer("müzik duraklatıldı")
             await cb.message.edit(
                 updated_stats(m_chat, qeue), reply_markup=r_ply("play")
             )
@@ -306,12 +306,12 @@ async def m_cb(b, cb):
             ACTV_CALLS(int(x.chat_id))
         if int(chat_id) not in ACTV_CALLS:
             await cb.answer(
-                "userbot is not connected to voice chat.", show_alert=True
+                "userbot sesli sohbete bağlı değil.", show_alert=True
             )
         else:
             await callsmusic.pytgcalls.resume_stream(chat_id)
             
-            await cb.answer("music resumed")
+            await cb.answer("müzik devam etti")
             await cb.message.edit(
                 updated_stats(m_chat, qeue), reply_markup=r_ply("pause")
             )
@@ -319,13 +319,13 @@ async def m_cb(b, cb):
     elif type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:
-            await cb.message.edit("❌ **no music is currently playing**")
+            await cb.message.edit("❌ **şu anda müzik çalmıyor**")
         temp = []
         for t in queue:
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "💡 **now playing** on {}".format(cb.message.chat.title)
+        msg = "💡 **şimdi oynatıyor** on {}".format(cb.message.chat.title)
         msg += "\n• " + now_playing
         msg += "\n• Req by " + by
         temp.pop(0)
@@ -339,27 +339,27 @@ async def m_cb(b, cb):
                 msg += f"\n• Req by {usr}"
         await cb.message.edit(msg, reply_markup=keyboard)
 
-    elif type_ == "resume":
-        psn = "▶ music playback has resumed"
+    elif type_ =="devam":
+        psn = "▶ müzik çalma devam etti"
         ACTV_CALLS = []
         for x in callsmusic.pytgcalls.active_calls:
             ACTV_CALLS(int(x.chat_id))
         if int(chat_id) not in ACTV_CALLS:
             await cb.answer(
-                "voice chat is not connected or already playing", show_alert=True
+                "sesli sohbet bağlı değil veya zaten yürütleniyor", show_alert=True
             )
         else:
             await callsmusic.pytgcalls.resume_stream(chat_id)
             await cb.message.edit(psn, reply_markup=keyboard)
 
     elif type_ == "puse":
-        spn = "⏸ music playback has paused"
+        spn = "⏸ müzik çalma duraklatıldı"
         ACTV_CALLS = []
         for x in callsmusic.pytgcalls.active_calls:
             ACTV_CALLS(int(x.chat_id))
         if int(chat_id) not in ACTV_CALLS:
             await cb.answer(
-                "voice chat is not connected or already paused", show_alert=True
+                "sesli sohbet bağlı değil veya zaten duraklatıldı", show_alert=True
             )
         else:
             await callsmusic.pytgcalls.pause_stream(chat_id)
@@ -368,27 +368,27 @@ async def m_cb(b, cb):
     elif type_ == "cls":
         await cb.message.delete()
 
-    elif type_ == "menu":
+    elif type_ == "menü":
         stats = updated_stats(cb.message.chat, qeue)
         marr = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("⏹", "leave"),
-                    InlineKeyboardButton("⏸", "puse"),
-                    InlineKeyboardButton("▶️", "resume"),
-                    InlineKeyboardButton("⏭", "skip"),
+                    InlineKeyboardButton("⏹", "son"),
+                    InlineKeyboardButton("⏸", "durdur"),
+                    InlineKeyboardButton("▶️", "devam"),
+                    InlineKeyboardButton("⏭", "atla"),
                 ],
                 [
-                    InlineKeyboardButton("📖 PLAY-LIST", "playlist"),
+                    InlineKeyboardButton("📖 Bilgi", "playlist"),
                 ],
-                [InlineKeyboardButton("🗑 Close", "cls")],
+                [InlineKeyboardButton("👉 Kapat", "cls")],
             ]
         )
         await cb.message.edit(stats, reply_markup=marr)
 
-    elif type_ == "skip":
-        nmq = "❌ no more music in __Queues__\n\n» **userbot leaving** voice chat"
-        mmk = "⏭ you skipped to the next music"
+    elif type_ == "atla":
+        nmq = "❌ daha fazla müzik yok __Sıra__\n\n» **userbot ayrılıyor** sesli sohbet"
+        mmk = "⏭ bir sonraki müziğe atladınız"
         if qeue:
             qeue.pop(0)
         ACTV_CALLS = []
@@ -396,7 +396,7 @@ async def m_cb(b, cb):
             ACTV_CALLS(int(x.chat_id))
         if int(chat_id) not in ACTV_CALLS:
             await cb.answer(
-                "assistant is not connected to voice chat !", show_alert=True
+                "asistan sesli sohbete bağlı değil !", show_alert=True
             )
         else:
             callsmusic.queues.task_done(chat_id)
@@ -407,7 +407,7 @@ async def m_cb(b, cb):
                 await cb.message.edit(
                     nmq,
                     reply_markup=InlineKeyboardMarkup(
-                        [[InlineKeyboardButton("🗑 Close", callback_data="close")]]
+                        [[InlineKeyboardButton("👉 Kapat", callback_data="cls")]]
                     ),
                 )
             else:
@@ -421,8 +421,8 @@ async def m_cb(b, cb):
                 )
                 await cb.message.edit(mmk, reply_markup=keyboard)
  
-    elif type_ == "leave":
-        hps = "✅ **the music playback has ended**"
+    elif type_ == "son":
+        hps = "✅ **müzik çalma sona erdi**"
         ACTV_CALLS = []
         for x in callsmusic.pytgcalls.active_calls:
             ACTV_CALLS(int(x.chat_id))
@@ -435,12 +435,12 @@ async def m_cb(b, cb):
             await cb.message.edit(
                 hps,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton("🗑 Close", callback_data="close")]]
+                    [[InlineKeyboardButton("👉 Kapat", callback_data="cls")]]
                 ),
             )
         else:
             await cb.answer(
-                "userbot is not connected to voice chat.", show_alert=True
+                "userbot sesli sohbete bağlı değil.", show_alert=True
             )
 
 
