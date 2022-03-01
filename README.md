@@ -85,3 +85,4 @@ Bu bota ev sahipliği yapmanın kolay yolu, Heroku'ya dağıtın
 
 ### Destek ve Güncelleştirmeler🎑
 <a href="https://t.me/Sohbetneresi"><img src="https://img.shields.io/badge/Join-Group%20Support-blue.svg?style=for-the-badge&logo=Telegram"></a> <a href="https://t.me/SohbetDestek"><img src="https://img.shields.io/badge/Join-Updates%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
+ ### En kısa sürede güncelleme gelecektir. 
