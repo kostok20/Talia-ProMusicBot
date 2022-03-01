@@ -681,22 +681,23 @@ async def play(_, message: Message):
         )
             requested_by = message.from_user.first_name
             await generate_cover(requested_by, title, views, duration, thumbnail)
-            file_path = await convert(youtube.download(url))   
-    chat_id = get_chat_id(message.chat)
-    if chat_id in callsmusic.pytgcalls.active_calls:
-        position = await queues.put(chat_id, file=file_path)
+            file_path = await convert(youtube.download(url))
+    for x in callsmusic.pytgcalls.active_calls:
+        ACTV_CALLS.append(int(x.chat_id))
+    if int(chat_id) in ACTV_CALLS:
+        position = await queues.put(chat_id, file_path)
         qeue = que.get(chat_id)
         s_name = title
         r_by = message.from_user
         loc = file_path
         appendable = [s_name, r_by, loc]
         qeue.append(appendable)
+        await lel.delete()
         await message.reply_photo(
             photo="final.png",
             caption = f"🎵 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Sıraya Alma `{position}`\n" \
                     + f"👨‍💼 **İstek:** {message.from_user.mention}",
                    reply_markup=keyboard)
-       
     else:
         chat_id = get_chat_id(message.chat)
         que[chat_id] = []
@@ -707,18 +708,28 @@ async def play(_, message: Message):
         appendable = [s_name, r_by, loc]
         qeue.append(appendable)
         try:
-            callsmusic.pytgcalls.join_group_call(chat_id, file_path)
-        except:
-            message.reply("**Sesli Sohbet Grubu kapalı, Katılamam.**")
+            await callsmusic.pytgcalls.join_group_call(
+                chat_id, 
+                InputStream(
+                    InputAudioStream(
+                        file_path,
+                    ),
+                ),
+                stream_type=StreamType().local_stream,
+            )
+        except Exception as e:
+            await lel.edit(
+                "😕 **voice chat not found**\n\n» please turn on the voice chat first"
+            )
             return
+        await lel.delete()
         await message.reply_photo(
             photo="final.png",
             caption = f"🎵 **İsmi:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Oynatılıyor\n" \
                     + f"👨‍💼 **İstek:** {message.from_user.mention}",
                    reply_markup=keyboard)
+        os.remove("final.png")
 
-    os.remove("final.png")
-    return await lel.delete()
 
 
 @Client.on_callback_query(filters.regex(pattern=r"plll"))
