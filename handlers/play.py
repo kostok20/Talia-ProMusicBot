@@ -750,8 +750,10 @@ async def lol_cb(b, cb):
     )
     requested_by = useer_name
     await generate_cover(requested_by, title, views, duration, thumbnail)
-    file_path = await converter.convert(youtube.download(url))  
-    if chat_id in callsmusic.pytgcalls.active_calls:
+    file_path = await convert(youtube.download(url))
+    for x in callsmusic.pytgcalls.active_calls:
+        ACTV_CALLS.append(int(x.chat_id))
+    if int(chat_id) in ACTV_CALLS:
         position = await queues.put(chat_id, file=file_path)
         qeue = que.get(chat_id)
         s_name = title
@@ -759,18 +761,16 @@ async def lol_cb(b, cb):
             r_by = cb.message.reply_to_message.from_user
         except:
             r_by = cb.message.from_user
-        loc = file_path
-        appendable = [s_name, r_by, loc]
-        qeue.append(appendable)
-        await cb.message.delete()
-        await b.send_photo(
-        chat_id,
-        photo="final.png",
-        caption=f"💡 **Kuyruğa eklenen parça**\n\n🎵 **İsmi:** [{title[:35]}]({url})\n⏱ **Süre:** `{duration}`\n👨‍💼 **İstek:** {r_by.mention}\n" \
-               +f"🔢 **Konumda:** » `{position}` «",
-        reply_markup=keyboard,
-        )
-        os.remove("final.png")
+            loc = file_path
+            appendable = [s_name, r_by, loc]
+            qeue.append(appendable)
+            await cb.message.delete()
+            await b.send_photo(
+                chat_id,
+                photo="final.png",
+                caption=f"💡 **Track added to queue »** `{position}`\n\n🏷 **Name:** [{title[:35]}...]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {cb.from_user.mention}",
+                reply_markup=keyboard,
+            )
     else:
         que[chat_id] = []
         qeue = que.get(chat_id)
@@ -779,17 +779,25 @@ async def lol_cb(b, cb):
             r_by = cb.message.reply_to_message.from_user
         except:
             r_by = cb.message.from_user
-        loc = file_path
-        appendable = [s_name, r_by, loc]
-        qeue.append(appendable)
-        callsmusic.pytgcalls.join_group_call(chat_id, file_path)
-        await cb.message.delete()
-        await b.send_photo(
-        chat_id,
-        photo="final.png",
-        caption=f"🎵 **İsmi:** [{title[:35]}]({url})\n⏱ **Süre:** `{duration}`\n💡 **Durum:** `Oynatılıyor`\n" \
-               +f"👨‍💼 **İstek:** {r_by.mention}",
-        reply_markup=keyboard,
-        )
-        os.remove("final.png")
- 
+            loc = file_path
+            appendable = [s_name, r_by, loc]
+            qeue.append(appendable)
+            await callsmusic.pytgcalls.join_group_call(
+                chat_id, 
+                InputStream(
+                    InputAudioStream(
+                        file_path,
+                    ),
+                ),
+                stream_type=StreamType().local_stream,
+            )
+            await cb.message.delete()
+            await b.send_photo(
+                chat_id,
+                photo="final.png",
+                caption=f"🏷 **Name:** [{title[:70]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n"
+                + f"🎧 **Request by:** {cb.from_user.mention}",
+                reply_markup=keyboard,
+            )
+            if path.exists("final.png"):
+                os.remove("final.png")
