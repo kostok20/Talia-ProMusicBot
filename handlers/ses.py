@@ -30,7 +30,7 @@ async def oynat(_, message: Message):
         [
             [
                 InlineKeyboardButton(
-                    text="🇹🇷 RESMİ KANAL", url=f"https://t.me/Sohbetdestek"
+                    text="🇹🇷 GRUP", url=f"https://t.me/sohbetsehriiiiiii"
                 ),
             ]
         ]
@@ -70,6 +70,6 @@ async def oynat(_, message: Message):
         await message.reply_photo(
         photo=f"https://telegra.ph/file/06128b8298df70f2d3c5f.jpg",
         reply_markup=keyboard,
-        caption=f"💡 **Durum**: **Oynatılıyor**\n\n🎧 **İstek:**: {costumer}\n🎛️ **Talia müzik tarafından**\nKeyifli Dinlemeler 🥰"
+        caption=f"💡 **Durum**: **Oynatılıyor**\n\n🎧 **İstek:**: {costumer}\n🎛️ **Sohbet Şehri Müzik tarafından**\nKeyifli Dinlemeler 🥰"
         )
         return await lel.delete()
