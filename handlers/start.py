@@ -33,13 +33,13 @@ async def _human_time_duration(seconds):
 async def start_(client: Client, message: Message):
     await message.reply_text(
         f"""<b>✨ **Merhabalar {message.from_user.first_name}** \n
-🎯 **[Talia Müzik](https://t.me/Sohbetdestek) Telegramın Sesli sohbetinde bana, Müzik çalmam için izin veriniz.**
+🎯 **[sOHBET ŞEHRİ MÜZİK](https://t.me/sohbetsehriiiiiii) Telegramın Sesli sohbetinde bana, Müzik çalmam için izin veriniz.**
 
 🔮 **Üzerine tıklayarak komutları çalıştırın ve ögreniniz.**
 
 ❓ **Bu botun tüm özellikleri hakkında bilgi almak için, basınız. /help**
 
-🔉 **Sesli sohbetlerde müzik çalmak için, [Talia Resmi Kanal](https://t.me/Sohbetdestek) Tarafından yapılmıştır.**
+🔉 **Sohbet Şehri Grubuna Özel Müzik Botu, [🅱️🅰️🆃🆄](https://t.me/IIlIlllIIIIIIlIlllII) Tarafından yapılmıştır.**
 </b>""",
         reply_markup=InlineKeyboardMarkup(
             [ 
@@ -48,19 +48,19 @@ async def start_(client: Client, message: Message):
                         "➕ Beni Grubuna Ekle➕", url=f"https://t.me/Mp3dinleme_Bot?startgroup=true")
                 ],[
                     InlineKeyboardButton(
-                         "🎯 Tagger Bot", url="https://t.me/UserEtiketBot"
+                         "🎯 Tagger Bot", url="https://t.me/SohbetSehriEtiket_bot"
                     ),
                     InlineKeyboardButton(
-                        "🏷️ Resmi Kanal", url=f"https://t.me/Sohbetdestek")
+                        "🏷️ Buna Basma 😂", url=f"https://t.me/basmademistimama")
                 ],[
                     InlineKeyboardButton(
-                        "💬 Grubumuz", url=f"https://t.me/sohbetskyfall"
+                        "💬 Grubumuz", url=f"https://t.me/sohbetsehriiiiiii"
                     ),
                     InlineKeyboardButton(
                         "▶️ Mp3 Botu", url=f"https://t.me/Mp3_aramaBot")               
                  ],[
                     InlineKeyboardButton(
-                        "⛔ Repo Bilgisi", url="https://github.com/Mehmetbaba55"
+                        "⛔ Repo Bilgisi", url="https://github.com/kostok20"
                     )
                 ]
             ]
@@ -80,10 +80,10 @@ async def start(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "☢ Grub", url=f"https://t.me/SohbetSkayfall"
+                        "☢ Grub", url=f"https://t.me/sohbetsehriiiiiii"
                     ),
                     InlineKeyboardButton(
-                        "📣 Kanal", url=f"https://t.me/SohbetDestek"
+                        "📣 Kanal", url=f"https://t.me/basmademistimama"
                     )
                 ]
             ]
@@ -98,7 +98,7 @@ async def help(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        text="✔ Beni nasıl kullanılırsın", url=f"https://t.me/Mp3dinleme_Bot?start=help"
+                        text="✔ Beni nasıl kullanılırsın", url=f"https://t.me/sohbetsehri_muzik_bot?start=help"
                     )
                 ]
             ]
@@ -150,15 +150,15 @@ async def help_(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "☣ Grub", url=f"https://t.me/Sohbetskyfall"
+                        "☣ Grub", url=f"https://t.me/sohbetsehriiiiii"
                     ),
                     InlineKeyboardButton(
-                        "📣 Kanal", url=f"https://t.me/SohbetDestek"
+                        "📣 Kanal", url=f"https://t.me/basmademistimama"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "♞🏻‍ Developer 🇹🇷", url=f"https://t.me/Mahoaga"
+                        "♞🏻‍ Sahip 🇹🇷", url=f"https://t.me/IIlIlllIIIIIIlIlllII"
                     )
                 ]
             ]
@@ -166,7 +166,7 @@ async def help_(client: Client, message: Message):
     )
 
 
-@Client.on_message(command(["ping", f"ping@mp3dinleme_Bot"]) & ~filters.edited)
+@Client.on_message(command(["ping", f"sohbetsehri_muzik_bot"]) & ~filters.edited)
 async def ping_pong(client: Client, message: Message):
     start = time()
     m_reply = await message.reply_text("ᴘɪɴɢɪɴɢ...")
@@ -177,7 +177,7 @@ async def ping_pong(client: Client, message: Message):
     )
 
 
-@Client.on_message(command(["uptime", f"uptime@Mp3dinleme_Bot"]) & ~filters.edited)
+@Client.on_message(command(["uptime", f"sohbetsehri_muzik_bot"]) & ~filters.edited)
 @authorized_users_only
 async def get_uptime(client: Client, message: Message):
     current_time = datetime.utcnow()
