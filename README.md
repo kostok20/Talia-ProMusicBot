@@ -4,7 +4,7 @@
  
 <p align="center">
     <a href="https://www.python.org/" alt="made-with-python"> <img src="https://img.shields.io/badge/Made%20with-Python-black.svg?style=flat-square&logo=python&logoColor=blue&color=red" /></a>
-    <a href="https://github.com/Mehmet5506/TaliaMusicV6.0"> <img src="https://img.shields.io/github/repo-size/aryazakaria01/CBMusicBot?color=red&logo=github&logoColor=blue&style=flat-square" /></a>
+    <a href="https://github.com/kostok20/Talia-ProMusicBot"> <img src="https://img.shields.io/github/repo-size/aryazakaria01/CBMusicBot?color=red&logo=github&logoColor=blue&style=flat-square" /></a>
 </p>
 <img src="https://i.ibb.co/syVTfWb/6d58817f09e15d326fa1807f2a57587c.jpg" alt="6d58817f09e15d326fa1807f2a57587c" border="0"> 
 
@@ -84,5 +84,5 @@ Bu bota ev sahipliği yapmanın kolay yolu, Heroku'ya dağıtın
 - [Talia Music Bot](https://t.me/ProMusic_bot) Müzik Botumuz
 
 ### Destek ve Güncelleştirmeler🎑
-<a href="https://t.me/Sohbetneresi"><img src="https://img.shields.io/badge/Join-Group%20Support-blue.svg?style=for-the-badge&logo=Telegram"></a> <a href="https://t.me/SohbetDestek"><img src="https://img.shields.io/badge/Join-Updates%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="https://t.me/sohbetsehriiiiiii"><img src="https://img.shields.io/badge/Join-Group%20Support-blue.svg?style=for-the-badge&logo=Telegram"></a> <a href="https://t.me/basmademistimama"><img src="https://img.shields.io/badge/Join-Updates%20Channel-blue.svg?style=for-the-badge&logo=Telegram"></a>
  ### En kısa sürede güncelleme gelecektir. 
